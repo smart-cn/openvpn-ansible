@@ -23,7 +23,7 @@ In such a case, "**-k**" key should be added to the ansible-playbook run command
 
 Clone the repo with all submodules:
 
-    git clone --recursive https://github.com/smart-cn/openvpn-ansible.git
+    git clone --recursive <project url>
 
 Pull all changes in the repo including changes in the submodules:
 
