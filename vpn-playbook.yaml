@@ -1,0 +1,21 @@
+- hosts: "{{ openvpn_server | default('openvpn_server') }}"
+  gather_facts: true
+  
+  roles:
+    - role: openvpn
+      openvpn_port: "{{ openvpn_server_port | default('1194') }}"
+      openvpn_sync_certs: true
+      clients: "{{ openvpn_server_clients | default(['xiaomiclient','huaweiclient','lenovoclient','probookclient','desktopclient']) }}"
+
+  tasks:
+    - name: Find client OpenVPN files
+      shell: |
+         (cd /etc/openvpn; find *.ovpn -maxdepth 1 -type f) | cut -d'/' -f2
+      register: files_to_copy
+
+    - name: Get client OpenVPN files
+      fetch: 
+        src: /etc/openvpn/{{ item }}
+        dest: ./ovpn_configs_generated/ 
+        flat: yes
+      with_items: "{{ files_to_copy.stdout_lines }}"
