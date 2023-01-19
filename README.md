@@ -17,13 +17,13 @@ In such a case, "**-k**" key should be added to the ansible-playbook run command
 
 **Clone repo:**
 
-    git clone --recursive ________
+    git clone --recursive https://github.com/smart-cn/openvpn-ansible.git
 
 ## Additional information about work with submodules (used submodule https://github.com/kyl191/ansible-role-openvpn):
 
 Clone the repo with all submodules:
 
-    git clone --recursive <project url>
+    git clone --recursive https://github.com/smart-cn/openvpn-ansible.git
 
 Pull all changes in the repo including changes in the submodules:
 
